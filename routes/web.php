@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/coba', function(){
-    return view("auth.login2");
-});
 
 require "frontend.php";
 require "admin.php";
