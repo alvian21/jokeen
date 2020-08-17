@@ -4,7 +4,8 @@
 
 Route::group([
     'prefix' => 'admin',
-    'namespace' => 'Admin'
+    'namespace' => 'Admin',
+    'middleware' => 'auth'
 ], function () {
     Route::resource('dashboard', 'DashboardController');
     Route::resource('portofolio', 'PortofolioController');

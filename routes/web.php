@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/coba', function(){
+    return view("auth.login2");
+});
+
 require "frontend.php";
 require "admin.php";
 // Route::get('/', function () {
 //     return view('admin.index');
 // });
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
