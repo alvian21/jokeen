@@ -65,7 +65,7 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item">Edit</a>
+                                        <a class="dropdown-item" href="{{route("portofolio.edit",[$item->id])}}">Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0)"
                                                 onclick="deletedata({{$item->id}})">Delete</a>
 

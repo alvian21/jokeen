@@ -74,7 +74,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view("admin.service.edit", ['service' => $service]);
     }
 
     /**
@@ -86,7 +87,20 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'title' => 'required',
+            'description' => "required",
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $service = Service::find($id);
+            $service->title = $request->get('title');
+            $service->description = $request->get('description');
+            $service->save();
+            return redirect()->route('service.index');
+        }
     }
 
     /**

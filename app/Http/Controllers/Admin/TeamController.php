@@ -83,7 +83,8 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $team = Team::find($id);
+        return view("admin.team.edit", ['team' => $team]);
     }
 
     /**
@@ -95,7 +96,29 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required',
+            'status' => "required",
+            'image' => 'image|mimes:jpeg,png,jpg|max:1024',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $team = Team::find($id);
+            $team->name = $request->get('name');
+            $team->status = $request->get('status');
+            if ($request->hasFile('image')) {
+                $img = $request->file('image');
+                Storage::delete("public/images/team/" . $team->image);
+                $filename = time() . '.' . $img->getClientOriginalExtension();
+                Storage::putFileAs("public/images/team", $img, $filename);
+                $team->image = $filename;
+            }
+
+            $team->save();
+            return redirect()->route('team.index');
+        }
     }
 
     /**

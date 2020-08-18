@@ -51,7 +51,7 @@
                                     {{$loop->iteration}}
                                 </th>
                                 <td class="budget">
-                                  {{$item->title}}
+                                    {{$item->title}}
                                 </td>
                                 <td>
                                     {{$item->description}}
@@ -64,7 +64,8 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item">Edit</a>
+                                            <a class="dropdown-item"
+                                                href="{{route("service.edit",[$item->id])}}">Edit</a>
                                             <a class="dropdown-item" href="javascript:void(0)"
                                                 onclick="deletedata({{$item->id}})">Delete</a>
 

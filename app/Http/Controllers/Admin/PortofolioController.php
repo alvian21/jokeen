@@ -65,7 +65,6 @@ class PortofolioController extends Controller
             if ($request->hasFile('image')) {
                 $img = $request->file('image');
                 $filename = time() . '.' . $img->getClientOriginalExtension();
-                // Image::make($img)->save(public_path('images/portfolio/' . $filename));
                 Storage::putFileAs("public/images/portfolio", $img, $filename);
             }
             $portfolio->image = $filename;
@@ -93,7 +92,8 @@ class PortofolioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portfolio = Portofolio::find($id);
+        return view('admin.portofolio.edit', ['portfolio' => $portfolio]);
     }
 
     /**
@@ -105,7 +105,38 @@ class PortofolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'title' => 'required',
+            'category' => "required",
+            'description' => "required",
+            'image' => 'image|mimes:jpeg,png,jpg|max:1024',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $portfolio = Portofolio::find($id);
+            $portfolio->title = $request->get('title');
+            if ($request->get('category') == "3D-MODEL") {
+                $filter = "filter-3dModel";
+            } elseif ($request->get('category') == "PROTOTYPE") {
+                $filter = "filter-protoype";
+            } else {
+                $filter = "filter-3dPrint";
+            }
+            $portfolio->filter = $filter;
+            $portfolio->category = $request->get('category');
+            $portfolio->description = $request->get('description');
+            if ($request->hasFile('image')) {
+                $img = $request->file('image');
+                Storage::delete("public/images/portfolio/" . $portfolio->image);
+                $filename = time() . '.' . $img->getClientOriginalExtension();
+                Storage::putFileAs("public/images/portfolio", $img, $filename);
+                $portfolio->image = $filename;
+            }
+            $portfolio->save();
+            return redirect()->route('portofolio.index');
+        }
     }
 
     /**
