@@ -24,7 +24,7 @@ class PortofolioController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.portofolio.create");
     }
 
     /**
