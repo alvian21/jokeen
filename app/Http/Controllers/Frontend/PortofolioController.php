@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Portofolio;
 
 class PortofolioController extends Controller
 {
@@ -14,7 +15,8 @@ class PortofolioController extends Controller
      */
     public function index()
     {
-        return view("frontend.portofolio.index");
+        $portfolio = Portofolio::all();
+        return view("frontend.portofolio.index", ['portfolio' => $portfolio]);
     }
 
     /**
@@ -46,7 +48,8 @@ class PortofolioController extends Controller
      */
     public function show($id)
     {
-        //
+        $portfolio = Portofolio::find($id);
+        return view("frontend.portofolio.detail", ["portfolio" => $portfolio]);
     }
 
     /**

@@ -147,10 +147,10 @@
                     <h4>{{$item->title}}</h4>
                         <p>{{$item->catgory}}</p>
                         <div class="portfolio-links">
-                            <a href="#"
+                            <a href="{{asset('storage/images/portfolio/'.$item->image)}}"
                                 data-gall="portfolioGallery" class="venobox" title="App 1"><i
                                     class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="{{route("frontend.portofolio.show",[$item->id])}}" title="More Details"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                 </div>

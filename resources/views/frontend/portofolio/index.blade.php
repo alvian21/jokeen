@@ -1,7 +1,7 @@
 @extends('frontend.main')
 @section('content')
-  <!-- ======= Breadcrumbs ======= -->
-  <section id="breadcrumbs" class="breadcrumbs">
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
@@ -26,125 +26,47 @@
 
         <div class="row" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-12 d-flex justify-content-center">
-              <ul id="portfolio-flters">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-3dModel">3D Model</li>
-                <li data-filter=".filter-protoype">Prototype</li>
-                <li data-filter=".filter-3dPrint">3d Print</li>
-              </ul>
+                <ul id="portfolio-flters">
+                    <li data-filter="*" class="filter-active">All</li>
+                    <li data-filter=".filter-3dModel">3D Model</li>
+                    <li data-filter=".filter-protoype">Prototype</li>
+                    <li data-filter=".filter-3dPrint">3d Print</li>
+                </ul>
             </div>
-          </div>
+        </div>
 
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-3dModel">
-                <div class="card">
-                    <div class="portfolio-wrap">
-                    <img src="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Keran</h4>
-                            <p>3D Model</p>
-                            <div class="portfolio-links">
-                            <a href="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" data-gall="portfolioGallery"
-                                    class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i
-                                        class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body" align="center">
-                        <h5 class="card-title" style="font-weight: bold;">Keran</h5>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae omnis doloribus
-                            eum amet cumque? Et optio culpa veritatis ullam voluptatem ex nihil neque veniam.
-                            Quas repudiandae laborum ad tenetur nostrum!
-                        </p>
-                        <a href="portfolio-details.html" class="btn btn-show">View Detail</a>
-                    </div>
-                </div>
-            </div>
+            @foreach ($portfolio as $item)
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="card">
-                    <div class="portfolio-wrap">
-                    <img src="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Keran</h4>
-                            <p>3D Model</p>
-                            <div class="portfolio-links">
-                            <a href="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" data-gall="portfolioGallery"
-                                    class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i
-                                        class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body" align="center">
-                        <h5 class="card-title" style="font-weight: bold;">Keran</h5>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae omnis doloribus
-                            eum amet cumque? Et optio culpa veritatis ullam voluptatem ex nihil neque veniam.
-                            Quas repudiandae laborum ad tenetur nostrum!
-                        </p>
-                        <a href="portfolio-details.html" class="btn btn-show">View Detail</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="col-lg-4 col-md-6 portfolio-item {{$item->filter}}">
                 <div class="card">
                     <div class="portfolio-wrap">
-                    <img src="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" class="img-fluid" alt="">
+                        <img src="{{asset('storage/images/portfolio/'.$item->image)}}" class="img-fluid" alt="">
                         <div class="portfolio-info">
-                            <h4>Keran</h4>
-                            <p>3D Model</p>
+                            <h4>{{$item->title}}</h4>
+                            <p>{{$item->category}}</p>
                             <div class="portfolio-links">
-                            <a href="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" data-gall="portfolioGallery"
-                                    class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i
+                                <a href="{{asset('storage/images/portfolio/'.$item->image)}}"
+                                    data-gall="portfolioGallery" class="venobox" title="App 1"><i
+                                        class="bx bx-plus"></i></a>
+                                <a href="{{route('frontend.portofolio.show',[$item->id])}}" title="More Details"><i
                                         class="bx bx-link"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body" align="center">
-                        <h5 class="card-title" style="font-weight: bold;">Keran</h5>
+                        <h5 class="card-title" style="font-weight: bold;">{{$item->title}}</h5>
                         <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae omnis doloribus
-                            eum amet cumque? Et optio culpa veritatis ullam voluptatem ex nihil neque veniam.
-                            Quas repudiandae laborum ad tenetur nostrum!
+                          {{$item->description}}
                         </p>
-                        <a href="portfolio-details.html" class="btn btn-show">View Detail</a>
+                        <a href="{{route('frontend.portofolio.show',[$item->id])}}" class="btn btn-show">View Detail</a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="card">
-                    <div class="portfolio-wrap">
-                    <img src="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Keran</h4>
-                            <p>3D Model</p>
-                            <div class="portfolio-links">
-                            <a href="{{asset('frontend/assets/img/portfolio/portofolio-4.png')}}" data-gall="portfolioGallery"
-                                    class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i
-                                        class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body" align="center">
-                        <h5 class="card-title" style="font-weight: bold;">Keran</h5>
-                        <p class="card-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae omnis doloribus
-                            eum amet cumque? Et optio culpa veritatis ullam voluptatem ex nihil neque veniam.
-                            Quas repudiandae laborum ad tenetur nostrum!
-                        </p>
-                        <a href="portfolio-details.html" class="btn btn-show">View Detail</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
 
         </div>
@@ -197,7 +119,7 @@
             </div>
 
             <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-            <img src="{{asset('frontend/assets/img/contact.png')}}" class="img-fluid" alt="">
+                <img src="{{asset('frontend/assets/img/contact.png')}}" class="img-fluid" alt="">
             </div>
 
         </div>
