@@ -24,7 +24,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.about-us.create");
     }
 
     /**
