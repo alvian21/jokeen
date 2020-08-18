@@ -40,6 +40,7 @@
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">No</th>
                                 <th scope="col" class="sort" data-sort="budget">Title</th>
+                                <th scope="col">Category</th>
                                 <th scope="col" class="sort" data-sort="status">Description</th>
                                 <th scope="col"></th>
                             </tr>
@@ -52,6 +53,9 @@
                             </th>
                             <td class="budget">
                               {{$item->title}}
+                            </td>
+                            <td>
+                                {{$item->category}}
                             </td>
                             <td>
                                 {{$item->description}}

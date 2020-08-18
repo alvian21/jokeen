@@ -59,31 +59,39 @@
 <section id="counts" class="counts">
     <div class="container">
         <div class="row">
+            @foreach ($about as $item)
+            @if ($item->category=="Ranah Jokeen.id")
             <div class="col-lg-6 order-1 order-lg-2 d-flex flex-column justify-content-center" data-aos="fade-left"
                 data-aos-delay="200">
-                <h1 data-aos="fade-up">Ranah Jokeen.id</h1>
+                <h1 data-aos="fade-up">{{$item->title}}</h1>
                 <p data-aos="fade-up" class="mt-3">
-                    Bergerak pada ranah engineering dan interior dalam pembuatan prototype sekaligus produk jadi.
+                    {{$item->description}}
                 </p>
             </div>
 
             <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 hero-img" data-aos="fade-up">
                 <img src="{{asset('frontend/assets/img/robot.png')}}" class="img-fluid" alt="">
             </div>
+            @endif
+            @endforeach
         </div>
 
         <div class="row">
+            @foreach ($about as $item)
+            @if ($item->category=="Program Jokeen.id")
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
                 <img src="{{asset('frontend/assets/img/img2.png')}}" class="img-fluid" alt="">
             </div>
 
             <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center"
                 data-aos="fade-up">
-                <h1 data-aos="fade-up">Program Jokeen.id</h1>
+                <h1 data-aos="fade-up">{{$item->title}}</h1>
                 <p data-aos="fade-up" class="mt-3">
-                    Jokeen.id memiliki prioritas pada program eksternal
+                    {{$item->description}}
                 </p>
             </div>
+            @endif
+            @endforeach
         </div>
     </div>
 </section>
@@ -144,13 +152,13 @@
                 <div class="portfolio-wrap">
                     <img src="{{asset('storage/images/portfolio/'.$item->image)}}" class="img-fluid" alt="">
                     <div class="portfolio-info">
-                    <h4>{{$item->title}}</h4>
+                        <h4>{{$item->title}}</h4>
                         <p>{{$item->catgory}}</p>
                         <div class="portfolio-links">
-                            <a href="{{asset('storage/images/portfolio/'.$item->image)}}"
-                                data-gall="portfolioGallery" class="venobox" title="App 1"><i
-                                    class="bx bx-plus"></i></a>
-                            <a href="{{route("frontend.portofolio.show",[$item->id])}}" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="{{asset('storage/images/portfolio/'.$item->image)}}" data-gall="portfolioGallery"
+                                class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                            <a href="{{route("frontend.portofolio.show",[$item->id])}}" title="More Details"><i
+                                    class="bx bx-link"></i></a>
                         </div>
                     </div>
                 </div>

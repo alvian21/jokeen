@@ -42,8 +42,8 @@ class AboutController extends Controller
     {
         $validator = Validator::make(request()->all(), [
             'title' => 'required',
+            'category' => 'required',
             'description' => "required",
-            'image' => 'image|mimes:jpeg,png,jpg|max:1024|required',
         ]);
 
         if ($validator->fails()) {
@@ -51,14 +51,8 @@ class AboutController extends Controller
         } else {
             $about = new About();
             $about->title = $request->get('title');
-
+            $about->category = $request->get('category');
             $about->description = $request->get('description');
-            if ($request->hasFile('image')) {
-                $img = $request->file('image');
-                $filename = time() . '.' . $img->getClientOriginalExtension();
-                Storage::putFileAs("public/images/about", $img, $filename);
-            }
-            $about->image = $filename;
             $about->save();
             return redirect()->route('about-us.index');
         }
@@ -98,23 +92,18 @@ class AboutController extends Controller
     {
         $validator = Validator::make(request()->all(), [
             'title' => 'required',
+            'category' => 'required',
             'description' => "required",
-            'image' => 'image|mimes:jpeg,png,jpg|max:1024',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
         } else {
             $about = About::find($id);
+
             $about->title = $request->get('title');
+            $about->category = $request->get('category');
             $about->description = $request->get('description');
-            if ($request->hasFile('image')) {
-                $img = $request->file('image');
-                Storage::delete("public/images/about/" . $about->image);
-                $filename = time() . '.' . $img->getClientOriginalExtension();
-                Storage::putFileAs("public/images/about", $img, $filename);
-                $about->image = $filename;
-            }
 
             $about->save();
             return redirect()->route('about-us.index');
@@ -130,7 +119,6 @@ class AboutController extends Controller
     public function destroy($id)
     {
         $about = About::find($id);
-        Storage::delete("public/images/about/" . $about->image);
         $about->delete();
 
         if ($about->delete()) {

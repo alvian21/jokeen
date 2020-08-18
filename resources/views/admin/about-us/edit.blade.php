@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                <form method="POST" action="{{route('about-us.update',[$about->id])}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('about-us.update',[$about->id])}}" >
                     @csrf
                     {{method_field("PUT")}}
                     @if($errors->any())
@@ -42,10 +42,14 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="image">Image</label>
-                                            <input type="file"  name="image" id="image" class="form-control">
-                                        </div>
+                                        <label for="category">Category</label>
+                                        <select class="form-control" name="category" id="category">
+                                            <option value="Ranah Jokeen.id" @if($about->category=="Ranah Jokeen.id") selected @endif>Ranah Jokeen.id</option>
+                                            <option value="Program Jokeen.id"  @if($about->category=="Program Jokeen.id") selected @endif>Program Jokeen.id</option>
+                                            <option value="3D modeling"  @if($about->category=="3D modeling") selected @endif>3D modeling</option>
+                                            <option value="Simulasi Sistem" @if($about->category=="Simulasi Sistem") selected @endif>Simulasi Sistem</option>
+                                            <option value="Pembuatan Prototype" @if($about->category=="Pembuatan Prototype") selected @endif>Pembuatan Prototype</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

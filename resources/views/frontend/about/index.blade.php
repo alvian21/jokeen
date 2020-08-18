@@ -40,51 +40,58 @@
     <div class="ranah">
         <div class="container">
             <div class="row d-flex justify-content-center">
+                @foreach ($about as $item)
+                @if($item->category == "3D modeling")
                 <div class="col-lg-6 order-1 order-lg-2 d-flex flex-column justify-content-center" data-aos="fade-left"
                     data-aos-delay="200">
-                    <h1 data-aos="fade-up">3D modeling</h1>
+                    <h1 data-aos="fade-up">{{$item->title}}</h1>
                     <p data-aos="fade-up" class="mt-3">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci neque culpa, aut
-                        saepe possimus accusamus numquam fuga aperiam? Consequuntur vero exercitationem quod
-                        impedit porro harum, aspernatur natus esse sequi quas.
+                        {{$item->description}}
                     </p>
                 </div>
 
                 <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 hero-img" data-aos="fade-up">
                     <img src="{{asset('frontend/assets/img/3d-model.png')}}" class="img-fluid" alt="">
                 </div>
+                @endif
+                @endforeach
+
             </div>
 
             <div class="row d-flex justify-content-center hero-img mt-3">
+                @foreach ($about as $item)
+                @if($item->category == "Simulasi Sistem")
                 <div class="col-lg-6 order-1 order-lg-2 " data-aos="fade-left" data-aos-delay="200">
                     <img src="{{asset('frontend/assets/img/sistem.png')}}" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center"
                     data-aos="fade-up">
-                    <h1 data-aos="fade-up">Simulasi Sistem</h1>
+                    <h1 data-aos="fade-up">{{$item->title}}</h1>
                     <p data-aos="fade-up" class="mt-3">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci neque culpa, aut
-                        saepe possimus accusamus numquam fuga aperiam? Consequuntur vero exercitationem quod
-                        impedit porro harum, aspernatur natus esse sequi quas.
+                        {{$item->description}}
                     </p>
                 </div>
+                @endif
+                @endforeach
             </div>
 
             <div class="row d-flex justify-content-center">
+                @foreach ($about as $item)
+                @if($item->category == "Pembuatan Prototype")
                 <div class="col-lg-6 order-1 order-lg-2 d-flex flex-column justify-content-center mt-3"
                     data-aos="fade-left" data-aos-delay="200">
-                    <h1 data-aos="fade-up">Pembuatan Prototype dan/atau barang jadi</h1>
+                    <h1 data-aos="fade-up">{{$item->title}}</h1>
                     <p data-aos="fade-up" class="mt-3">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci neque culpa, aut
-                        saepe possimus accusamus numquam fuga aperiam? Consequuntur vero exercitationem quod
-                        impedit porro harum, aspernatur natus esse sequi quas.
+                        {{$item->description}}
                     </p>
                 </div>
 
                 <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 hero-img" data-aos="fade-up">
                     <img src="{{asset('frontend/assets/img/pembuatan.png')}}" class="img-fluid" alt="">
                 </div>
+                @endif
+                @endforeach
             </div>
 
         </div>
