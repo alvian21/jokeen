@@ -20,25 +20,23 @@
                         <div class="col-8">
                             <h3 class="mb-0">Create Team </h3>
                         </div>
-                        <div class="col-4 text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                <form method="POST" action="{{route('team.create')}}" enctype="multipart/form-data">
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" placeholder="John Doe">
+                                        <input type="text" id="name" required name="name" class="form-control" placeholder="John Doe">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="status">Status</label>
-                                        <input type="text" id="status" class="form-control" placeholder="Founder">
+                                        <input type="text" id="status" required name="status" class="form-control" placeholder="Founder">
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +44,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="image">Image</label>
-                                        <input type="file" id="image" class="form-control">
+                                        <input type="file" id="image" required name="image" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +53,7 @@
 
                         <div class="row">
                             <div class="col text-center">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" name="save" class="btn btn-primary">Create</button>
                             </div>
                         </div>
                     </form>

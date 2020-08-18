@@ -20,28 +20,27 @@
                         <div class="col-8">
                             <h3 class="mb-0">Create Portfolio </h3>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                <form method="POST" action="{{route('portofolio.store')}}" enctype="multipart/form-data">
+                    @csrf
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="title">Title</label>
-                                        <input type="text" id="title" class="form-control" placeholder="Title">
+                                        <input type="text" id="title" name="title" class="form-control" required placeholder="Title">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="category">Category</label>
-                                        <select class="form-control" id="category">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" name="category" id="category">
+                                            <option value="3D-MODEL">3D MODEL</option>
+                                            <option value="PROTOTYPE">PROTOTYPE</option>
+                                            <option value="3D-PRINT">3D PRINT</option>
                                         </select>
                                     </div>
                                 </div>
@@ -50,7 +49,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="image">Image</label>
-                                        <input type="file" id="image" class="form-control">
+                                        <input type="file" id="image" name="image" required class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -59,12 +58,12 @@
                         <div class="pl-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label">Description</label>
-                                <textarea rows="4" class="form-control"></textarea>
+                                <textarea rows="4" class="form-control" name="description" required></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" name="save" class="btn btn-primary">Create</button>
                             </div>
                         </div>
                     </form>

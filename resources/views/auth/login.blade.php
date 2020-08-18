@@ -25,9 +25,7 @@
     <!-- Navbar -->
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="dashboard.html">
-                <img src="../assets/img/brand/white.png">
-            </a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
                 aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,11 +33,7 @@
             <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
                 <div class="navbar-collapse-header">
                     <div class="row">
-                        <div class="col-6 collapse-brand">
-                            <a href="dashboard.html">
-                                <img src="../assets/img/brand/blue.png">
-                            </a>
-                        </div>
+
                         <div class="col-6 collapse-close">
                             <button type="button" class="navbar-toggler" data-toggle="collapse"
                                 data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false"
@@ -77,7 +71,7 @@
                     <div class="card bg-secondary border-0 mb-0">
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="text-center text-muted mb-4">
-                                <h3>SignIn</h3>
+                                <h3>SignIn Jokeen.id Admin</h3>
                             </div>
                             <form role="form" action="{{ route('login') }}" method="POST">
                                 @csrf

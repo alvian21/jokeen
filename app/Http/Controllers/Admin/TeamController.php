@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
+use App\Team;
 
 class TeamController extends Controller
 {
@@ -35,7 +38,28 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required',
+            'status' => "required",
+            'image' => 'image|mimes:jpeg,png,jpg|max:1024|required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $team = new Team();
+            $team->name = $request->get('name');
+
+            $team->status = $request->get('status');
+            if ($request->hasFile('image')) {
+                $img = $request->file('image');
+                $filename = time() . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->save(public_path('images/team/' . $filename));
+            }
+            $team->image = $filename;
+            $team->save();
+            return redirect()->route('team.index');
+        }
     }
 
     /**
