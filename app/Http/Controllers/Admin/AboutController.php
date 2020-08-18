@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 use App\About;
@@ -54,7 +55,7 @@ class AboutController extends Controller
             if ($request->hasFile('image')) {
                 $img = $request->file('image');
                 $filename = time() . '.' . $img->getClientOriginalExtension();
-                Image::make($img)->save(public_path('images/about/' . $filename));
+                Storage::putFileAs("public/images/about", $img, $filename);
             }
             $about->image = $filename;
             $about->save();

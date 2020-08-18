@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Portofolio;
 
 class PortofolioController extends Controller
@@ -63,7 +64,8 @@ class PortofolioController extends Controller
             if ($request->hasFile('image')) {
                 $img = $request->file('image');
                 $filename = time() . '.' . $img->getClientOriginalExtension();
-                Image::make($img)->save(public_path('images/portfolio/' . $filename));
+                // Image::make($img)->save(public_path('images/portfolio/' . $filename));
+                Storage::putFileAs("public/images/portfolio", $img, $filename);
             }
             $portfolio->image = $filename;
             $portfolio->save();

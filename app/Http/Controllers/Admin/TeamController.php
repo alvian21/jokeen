@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
@@ -54,7 +55,7 @@ class TeamController extends Controller
             if ($request->hasFile('image')) {
                 $img = $request->file('image');
                 $filename = time() . '.' . $img->getClientOriginalExtension();
-                Image::make($img)->save(public_path('images/team/' . $filename));
+                Storage::putFileAs("public/images/team", $img, $filename);
             }
             $team->image = $filename;
             $team->save();
