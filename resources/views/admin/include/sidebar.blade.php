@@ -12,32 +12,32 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('dashboard.index')}}">
-                            <i class="ni ni-tv-2 text-primary"></i>
+                        <a class="nav-link {{ Request::path() ==  'admin/dashboard' ? 'active' : ''  }}" href="{{route('dashboard.index')}}">
+                            <i class="ni ni-tv-2 {{ Request::path() ==  'admin/dashboard' ? 'text-primary' : 'text-default'  }}"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('portofolio.index')}}">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
+                        <a class="nav-link {{ Request::path() ==  'admin/portofolio' ? 'active' : ''  }}" href="{{route('portofolio.index')}}">
+                            <i class="ni ni-bullet-list-67 {{ Request::path() ==  'admin/portofolio' ? 'text-primary' : 'text-default'  }}"></i>
                             <span class="nav-link-text">Portofolio</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('team.index')}}">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
+                        <a class="nav-link {{ Request::path() ==  'admin/team' ? 'active' : ''  }}" href="{{route('team.index')}}">
+                            <i class="ni ni-bullet-list-67 {{ Request::path() ==  'admin/team' ? 'text-primary' : 'text-default'  }}"></i>
                             <span class="nav-link-text">Team</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('service.index')}}">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
+                        <a class="nav-link {{ Request::path() ==  'admin/service' ? 'active' : ''  }}" href="{{route('service.index')}}">
+                            <i class="ni ni-bullet-list-67 {{ Request::path() ==  'admin/service' ? 'text-primary' : 'text-default'  }}"></i>
                             <span class="nav-link-text">Service</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('about-us.index')}}">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
+                        <a class="nav-link {{ Request::path() ==  'admin/about-us' ? 'active' : ''  }}" href="{{route('about-us.index')}}">
+                            <i class="ni ni-bullet-list-67 {{ Request::path() ==  'admin/about-us' ? 'text-primary' : 'text-default'  }}"></i>
                             <span class="nav-link-text">About us</span>
                         </a>
                     </li>

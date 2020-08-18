@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Service;
+use App\Team;
+use App\Portofolio;
+use App\About;
 
 class HomeController extends Controller
 {
@@ -14,7 +18,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view("frontend.index");
+        $service = Service::all();
+        $team = Team::all();
+        $portfolio = Portofolio::all();
+        $about = About::all();
+        return view("frontend.index", [
+            'service' => $service,
+            'team' => $team, 'portfolio' => $portfolio, 'about' => $about
+        ]);
     }
 
     /**
