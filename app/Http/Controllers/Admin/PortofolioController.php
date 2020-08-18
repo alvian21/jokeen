@@ -63,7 +63,7 @@ class PortofolioController extends Controller
             if ($request->hasFile('image')) {
                 $img = $request->file('image');
                 $filename = time() . '.' . $img->getClientOriginalExtension();
-                Image::make($img)->save(public_path('images/' . $filename));
+                Image::make($img)->save(public_path('images/portfolio/' . $filename));
             }
             $portfolio->image = $filename;
             $portfolio->save();
