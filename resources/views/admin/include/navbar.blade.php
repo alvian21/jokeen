@@ -5,7 +5,7 @@
 
         <!-- Navbar links -->
         <ul class="navbar-nav align-items-center  ml-md-auto ">
-          
+
         </ul>
         <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
           <li class="nav-item dropdown">
@@ -15,7 +15,7 @@
                 <img alt="Image placeholder" src="{{asset('assets/img/theme/team-4.jpg')}}">
                 </span>
                 <div class="media-body  ml-2  d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->name}}</span>
                 </div>
               </div>
             </a>
