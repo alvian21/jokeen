@@ -36,14 +36,14 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="title">Title</label>
-                                        <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+                                        <input type="text" required name="title" id="title" class="form-control" placeholder="Title">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label class="form-control-label" for="image">Image</label>
-                                            <input type="file" name="image" id="image" class="form-control">
+                                            <input type="file" required name="image" id="image" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                         <div class="pl-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label">Description</label>
-                                <textarea rows="4" name="description" class="form-control"></textarea>
+                                <textarea rows="4" required name="description" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="row">
