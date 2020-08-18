@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Service;
 
 class ServiceController extends Controller
 {
@@ -35,7 +37,20 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'title' => 'required',
+            'description' => "required",
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $service = new Service();
+            $service->title = $request->get('title');
+            $service->description = $request->get('description');
+            $service->save();
+            return redirect()->route('service.index');
+        }
     }
 
     /**

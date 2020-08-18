@@ -26,6 +26,11 @@
                 <div class="card-body">
                 <form method="POST" action="{{route('portofolio.store')}}" enctype="multipart/form-data">
                     @csrf
+                    @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        {{$errors->first()}}
+                    </div>
+                    @endif
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">

@@ -24,13 +24,20 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" action="{{route("service.store")}}">
+                        @csrf
+                        @if($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            {{$errors->first()}}
+                        </div>
+                        @endif
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-control-label" for="title">Title</label>
-                                        <input type="text" id="title" class="form-control" placeholder="Title">
+                                        <input type="text" name="title" id="title" class="form-control"
+                                            placeholder="Title">
                                     </div>
                                 </div>
 
@@ -41,12 +48,12 @@
                         <div class="pl-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label">Description</label>
-                                <textarea rows="4" class="form-control"></textarea>
+                                <textarea rows="4" name="description" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary" name="save">Create</button>
                             </div>
                         </div>
                     </form>

@@ -14,10 +14,7 @@
               </ol>
             </nav>
           </div>
-          <div class="col-lg-6 col-5 text-right">
-            <a href="#" class="btn btn-sm btn-neutral">New</a>
-            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-          </div>
+        
         </div>
       </div>
     </div>
@@ -28,7 +25,14 @@
       <div class="col">
         <div class="card bg-default shadow">
           <div class="card-header bg-transparent border-0">
-            <h3 class="text-white mb-0">Dark table</h3>
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h3 class="mb-0 text-white">Team List</h3>
+                </div>
+                <div class="col-4 text-right">
+                <a href="{{route('team.create')}}" class="btn btn-sm btn-primary">Create Team</a>
+                </div>
+            </div>
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-dark table-flush">

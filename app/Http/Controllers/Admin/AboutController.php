@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+use App\About;
 
 class AboutController extends Controller
 {
@@ -35,7 +38,28 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(request()->all(), [
+            'title' => 'required',
+            'description' => "required",
+            'image' => 'image|mimes:jpeg,png,jpg|max:1024|required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $about = new About();
+            $about->title = $request->get('title');
+
+            $about->description = $request->get('description');
+            if ($request->hasFile('image')) {
+                $img = $request->file('image');
+                $filename = time() . '.' . $img->getClientOriginalExtension();
+                Image::make($img)->save(public_path('images/about/' . $filename));
+            }
+            $about->image = $filename;
+            $about->save();
+            return redirect()->route('about-us.index');
+        }
     }
 
     /**

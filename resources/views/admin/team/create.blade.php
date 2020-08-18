@@ -24,7 +24,13 @@
                     </div>
                 </div>
                 <div class="card-body">
-                <form method="POST" action="{{route('team.create')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('team.store')}}" enctype="multipart/form-data">
+                    @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        {{$errors->first()}}
+                    </div>
+                    @endif
+                    @csrf
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
