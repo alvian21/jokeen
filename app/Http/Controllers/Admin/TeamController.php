@@ -18,7 +18,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view("admin.team.index");
+        $team = Team::all();
+        return view("admin.team.index", ['team' => $team]);
     }
 
     /**
@@ -105,6 +106,11 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $team = Team::find($id);
+        Storage::delete("public/images/team/" . $team->image);
+        $team->delete();
+        if ($team->delete()) {
+            echo "success";
+        }
     }
 }

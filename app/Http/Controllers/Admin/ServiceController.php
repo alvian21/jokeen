@@ -17,7 +17,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view("admin.service.index");
+        $service = Service::all();
+        return view("admin.service.index", ['service' => $service]);
     }
 
     /**
@@ -96,6 +97,11 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+
+        if ($service->delete()) {
+            echo "success";
+        }
     }
 }

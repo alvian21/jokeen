@@ -18,7 +18,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view("admin.about-us.index");
+        $about = About::all();
+        return view("admin.about-us.index", ['about' => $about]);
     }
 
     /**
@@ -105,6 +106,12 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $about = About::find($id);
+        Storage::delete("public/images/about/" . $about->image);
+        $about->delete();
+
+        if ($about->delete()) {
+            echo "success";
+        }
     }
 }

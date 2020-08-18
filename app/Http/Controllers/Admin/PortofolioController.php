@@ -116,6 +116,13 @@ class PortofolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $portfolio = Portofolio::find($id);
+        Storage::delete("public/images/portfolio/" . $portfolio->image);
+        $portfolio->delete();
+
+        if ($portfolio->delete()) {
+            echo "success";
+        }
     }
 }

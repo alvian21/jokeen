@@ -49,9 +49,9 @@
                             @foreach ($portfolio as $item)
                             <tr>
                                 <th scope="row">
-                                  {{$loop->iteration}}
+                                    {{$loop->iteration}}
                                 </th>
-                                <td >
+                                <td>
                                     {{$item->title}}
                                 </td>
                                 <td>
@@ -65,8 +65,9 @@
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
+                                            <a class="dropdown-item">Edit</a>
+                                            <a class="dropdown-item" href="javascript:void(0)"
+                                                onclick="deletedata({{$item->id}})">Delete</a>
 
                                         </div>
                                     </div>
@@ -81,4 +82,42 @@
     </div>
 
 </div>
+@endsection
+@section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function ajax(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    }
+
+    function deletedata(id){
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                ajax();
+                $.ajax({
+                    url:"/admin/portofolio/"+id,
+                    method:"DELETE",
+                    success:function(data){
+                        swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                        });
+                        window.setTimeout(function(){window.location.href="/admin/portofolio"},1500);
+
+                    }
+                })
+            }
+            });
+    }
+</script>
 @endsection
