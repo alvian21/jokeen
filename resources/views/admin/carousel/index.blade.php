@@ -42,7 +42,15 @@
         <div class="col-md-3">
             @foreach ($cr as $item)
             <div class="card bg-default shadow">
-                <img src="{{asset('storage/images/carousel/'.$item->image)}}"  alt="" srcset="">
+                <div class="card-header bg-transparent border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                        <h3 class="mb-0 text-white">Carousel {{$loop->iteration}}</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <img src="{{asset('storage/images/carousel/'.$item->image)}}" width="100%" alt="" srcset="">
                 <div class="card-body text-right">
                     <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"

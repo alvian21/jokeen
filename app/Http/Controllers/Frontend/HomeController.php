@@ -8,6 +8,7 @@ use App\Service;
 use App\Team;
 use App\Portofolio;
 use App\About;
+use App\Carousel;
 
 class HomeController extends Controller
 {
@@ -22,9 +23,11 @@ class HomeController extends Controller
         $team = Team::all();
         $portfolio = Portofolio::all();
         $about = About::all();
+        $cr = Carousel::all();
         return view("frontend.index", [
             'service' => $service,
-            'team' => $team, 'portfolio' => $portfolio, 'about' => $about
+            'team' => $team, 'portfolio' => $portfolio, 'about' => $about,
+            'cr' => $cr
         ]);
     }
 
