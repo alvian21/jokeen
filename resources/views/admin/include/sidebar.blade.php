@@ -41,6 +41,12 @@
                             <span class="nav-link-text">About us</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::path() ==  'admin/carousel' ? 'active' : ''  }}" href="{{route('carousel.index')}}">
+                            <i class="ni ni-bullet-list-67 {{ Request::path() ==  'admin/carousel' ? 'text-primary' : 'text-default'  }}"></i>
+                            <span class="nav-link-text">Carousel</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

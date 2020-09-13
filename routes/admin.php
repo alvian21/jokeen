@@ -1,7 +1,6 @@
 <?php
 
 
-
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
@@ -13,5 +12,5 @@ Route::group([
     Route::resource('team', 'TeamController');
     Route::resource('about-us', 'AboutController');
     Route::resource('service', 'ServiceController');
-
+    Route::resource('carousel', 'CarouselController');
 });
